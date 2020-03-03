@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Rider</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">User Name</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="book_ride">Book Ride</string>
+    <string name="your_trip">Your Trip</string>
+    <string name="payments">Payments</string>
+    <string name="notification">Notification</string>
+    <string name="profile">Profile</string>
+    <string name="about_us">Share</string>
+    <string name="google_maps_key">AIzaSyBrVuR9sX8uIzfVKI4jJxecWpPNPAtA3YY</string>
+
+    <string name="multiple_line">Almost done !"\n"Enter mobile number to "\n"continue  </string>
+    <string name="we_will_send_you_an_otp_for_verification">We will Send You an OTP for verification</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
