@@ -2,6 +2,7 @@ package com.eziride.rider;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.eziride.rider.models.OtpSend;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.hbb20.CountryCodePicker;
@@ -20,17 +23,22 @@ import com.hbb20.CountryCodePicker;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import retrofit2.Call;
+
 public class PhoneAuthActivity extends AppCompatActivity {
 
     private CountryCodePicker ccp;
     EditText Phone_number_edt;
     String phone_number;
     Button next_btn;
+    ApiInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_auth);
+
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         ccp = findViewById(R.id.phAuth_ccp);
         Phone_number_edt = findViewById(R.id.et_phone_number);
@@ -45,9 +53,10 @@ public class PhoneAuthActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                next_btn.setVisibility(View.GONE);
                 if(TextUtils.isEmpty(s)){
                     Phone_number_edt.setError("Phone Number cant be empty");
-                } else if(s.length() < 10){
+                } else if(s.length() != 10 ){
                     Phone_number_edt.setError("Invalid Number");
                 } else{
                     next_btn.setVisibility(View.VISIBLE);
@@ -79,18 +88,18 @@ public class PhoneAuthActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 otpCode();
-                /*try {
-                    if (CommonUtils.isConnectingToInternet(MyActivity.this)) {
-                        final ProgressDialog dialog;
-                        dialog = new ProgressDialog(MyActivity.this);
-                        dialog.setMessage("Loading...");
-                        dialog.setCanceledOnTouchOutside(false);
-                        dialog.show();
-
-                        Call<ResponseBean> registerCall = ApiHandler.getApiService().ApiName(ApiJsonMap());
-                        registerCall.enqueue(new retrofit2.Callback<ResponseBean>() {
+//                try {
+//                    if (CommonUtils.isConnectingToInternet(MyActivity.this)) {
+//                        final ProgressDialog dialog;
+//                        dialog = new ProgressDialog(MyActivity.this);
+//                        dialog.setMessage("Loading...");
+//                        dialog.setCanceledOnTouchOutside(false);
+//                        dialog.show();
+//
+                        Call<OtpSend> otpSendCall = apiInterface.sendOtp(gsonObject);
+                otpSendCall.enqueue(new retrofit2.Callback<OtpSend>() {
                             @Override
-                            public void onResponse(Call<ResponseBean> registerCall, retrofit2.Response<ResponseBean> response) {
+                            public void onResponse(Call<OtpSend> otpCall, retrofit2.Response<OtpSend> response) {
 
                                 try {
                                     //print respone
@@ -100,8 +109,8 @@ public class PhoneAuthActivity extends AppCompatActivity {
 
                                     if (response.isSuccessful()) {
 
-                                        dialog.dismiss();
-                                        int success = response.body().getSuccess();
+                                        //dialog.dismiss();
+                                        int success = response.body().getStatus();
                                         if (success == 1) {
 
 
@@ -110,49 +119,50 @@ public class PhoneAuthActivity extends AppCompatActivity {
 
 
 
-                                        }
+                                       }
                                     } else {
-                                        dialog.dismiss();
+                                        //dialog.dismiss();
 
 
                                     }
-
-
+//
+//
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                     try {
                                         Log.e("Tag", "error=" + e.toString());
 
-                                        dialog.dismiss();
+//                                        dialog.dismiss();
                                     } catch (Resources.NotFoundException e1) {
                                         e1.printStackTrace();
                                     }
-
+//
                                 }
                             }
-
+//
                             @Override
-                            public void onFailure(Call<ResponseBean> call, Throwable t) {
+                            public void onFailure(Call<OtpSend> call, Throwable t) {
                                 try {
                                     Log.e("Tag", "error" + t.toString());
-
-                                    dialog.dismiss();
+//
+//                                    dialog.dismiss();
                                 } catch (Resources.NotFoundException e) {
                                     e.printStackTrace();
                                 }
                             }
-
+//
                         });
-
-                    } else {
-                        Log.e("Tag", "error= Alert no internet");
-
-
+//
                     }
-                } catch (Resources.NotFoundException e) {
-                    e.printStackTrace();
-                }*/
-            }
+//                    else {
+ //                       Log.e("Tag", "error= Alert no internet");
+//
+//
+ //                   }
+ //               } catch (Resources.NotFoundException e) {
+ //                   e.printStackTrace();
+//                }
+
         });
 
 
