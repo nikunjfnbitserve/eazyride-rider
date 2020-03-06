@@ -39,14 +39,14 @@
 
 
         <EditText
-
             android:id="@+id/h_yloc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/background_et"
             android:drawableLeft="@drawable/ic_add_location_black_24dp"
-            android:hint="  Your Location "
+            android:drawableTint="@color/colorPrimary"
+            android:hint=" My Location"
             android:padding="4dp" />
 
 
@@ -56,9 +56,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="18dp"
-            android:background="@drawable/background_et"
             android:drawableLeft="@drawable/ic_location"
-            android:hint="  Destination Location "
+            android:drawableTint="@color/colorPrimary"
+            android:background="@drawable/background_et"
+            android:hint=" Destination Location"
             android:padding="4dp" />
 
         <Button
@@ -66,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:background="@color/colorPrimaryDark"
+            android:background="@drawable/common_buttons_bg"
             android:text="Start Booking"
             android:textAllCaps="false"
             android:textColor="#ffffff" />

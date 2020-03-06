@@ -14,7 +14,7 @@ import android.widget.ImageView;
 public class Splash extends AppCompatActivity {
 
     ImageView logo;
-    public  static int timeforsplash=3000;
+    public static final int TIME = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +27,11 @@ public class Splash extends AppCompatActivity {
 
 
         //getting image here
-        logo=findViewById(R.id.logo);
+        logo = findViewById(R.id.logo);
 
         //animation code
 
-        Animation animation1= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.move);
-        logo.setAnimation(animation1);
+
 
 
 
@@ -43,6 +42,6 @@ public class Splash extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),Register.class));
                 Splash.this.finish();
             }
-        },timeforsplash);
+        },TIME);
     }
 }

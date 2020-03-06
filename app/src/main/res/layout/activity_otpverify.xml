@@ -20,14 +20,13 @@
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:gravity="center"
-            android:hint="OTP code"
-            />
-        >
+            android:hint="OTP code" />
+
         <Button
             android:id="@+id/otp_verify_btn"
             android:text="Verify"
             android:textAllCaps="false"
-            android:background="@color/colorPrimaryDark"
+            android:background="@drawable/common_buttons_bg"
             android:layout_marginTop="18dp"
             android:textColor="#ffffff"
             android:layout_width="250dp"

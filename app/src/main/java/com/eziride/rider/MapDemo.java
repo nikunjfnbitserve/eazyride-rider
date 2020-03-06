@@ -52,25 +52,20 @@ public class MapDemo extends Fragment implements OnMapReadyCallback {
     private long FASTEST_INTERVAL=5000;
     LatLng latLng;
 
-
-
-
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view= inflater.inflate(R.layout.fragment_map_demo, container, false);
 
-       pickupLocation=view.findViewById(R.id.h_yloc);
-       destinationLocation=view.findViewById(R.id.h_dloc);
-            mFusedLocationClient= LocationServices.getFusedLocationProviderClient(getActivity());
+        pickupLocation=view.findViewById(R.id.h_yloc);
+        destinationLocation=view.findViewById(R.id.h_dloc);
+        mFusedLocationClient= LocationServices.getFusedLocationProviderClient(getActivity());
 
-            fetchLocation();
-          mapview=view.findViewById(R.id.mapView);
-          mapview.onCreate(savedInstanceState);
+        fetchLocation();
+        mapview=view.findViewById(R.id.mapView);
+        mapview.onCreate(savedInstanceState);
 
-          mapview.getMapAsync(this);
+        mapview.getMapAsync(this);
         //  mapview.onResume();
 
         pickupLocation.setOnClickListener(new View.OnClickListener() {
@@ -94,8 +89,7 @@ public class MapDemo extends Fragment implements OnMapReadyCallback {
                 mFusedLocationClient.getLastLocation()
                         .addOnCompleteListener( new OnCompleteListener<Location>() {
                             @Override
-                            public void onComplete( Task<Location> task) {
-
+                            public void onComplete(Task<Location> task) {
                                 currentLocation=task.getResult();
                                 if(currentLocation==null)
                                 {
@@ -105,7 +99,6 @@ public class MapDemo extends Fragment implements OnMapReadyCallback {
                                 {
                                     lat=currentLocation.getLatitude();
                                     lang=currentLocation.getLongitude();
-
 
                                 }
                             }
@@ -167,7 +160,6 @@ public class MapDemo extends Fragment implements OnMapReadyCallback {
 
         mGoogleMap=googleMap;
 
-
         LatLng rloc = new LatLng(lat,lang);
 
         mGoogleMap.clear();
@@ -175,9 +167,6 @@ public class MapDemo extends Fragment implements OnMapReadyCallback {
             mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(rloc));
             mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(rloc,15));
             mGoogleMap.addMarker(new MarkerOptions().position(rloc).title("Marker in current location"));
-
-
-
     }
 
     @Override

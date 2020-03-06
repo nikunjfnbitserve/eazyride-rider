@@ -18,7 +18,7 @@ public class OTPVerify extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otpverify);
 
-        verify=findViewById(R.id.otp_verify_btn);
+        verify = findViewById(R.id.otp_verify_btn);
 
 
         verify.setOnClickListener(new View.OnClickListener() {

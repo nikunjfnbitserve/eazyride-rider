@@ -6,7 +6,8 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/book_ride_icon"
+            android:icon="@drawable/ic_easiridelogo"
+            android:iconTint="@android:color/black"
             android:title="@string/book_ride" />
         <item
             android:id="@+id/nav_gallery"
