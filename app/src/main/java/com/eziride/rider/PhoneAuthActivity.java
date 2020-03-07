@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.eziride.rider.models.OtpSend;
 import com.google.gson.Gson;
@@ -73,6 +74,7 @@ public class PhoneAuthActivity extends AppCompatActivity {
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),OTPVerify.class));
                 JsonObject gsonObject = new JsonObject();
                 try {
                     JSONObject jsonObj_ = new JSONObject();
@@ -87,7 +89,7 @@ public class PhoneAuthActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                otpCode();
+
 //                try {
 //                    if (CommonUtils.isConnectingToInternet(MyActivity.this)) {
 //                        final ProgressDialog dialog;
@@ -112,7 +114,8 @@ public class PhoneAuthActivity extends AppCompatActivity {
                                         //dialog.dismiss();
                                         int success = response.body().getStatus();
                                         if (success == 1) {
-
+                                            Toast.makeText(PhoneAuthActivity.this, "otp send success", Toast.LENGTH_SHORT).show();
+                                            //startActivity(new Intent(getApplicationContext(),OTPVerify.class));
 
 
                                         } else if (success == 0) {
@@ -163,7 +166,9 @@ public class PhoneAuthActivity extends AppCompatActivity {
  //                   e.printStackTrace();
 //                }
 
+
         });
+
 
 
     }

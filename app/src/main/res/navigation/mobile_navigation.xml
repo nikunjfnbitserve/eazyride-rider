@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.eziride.rider.MapDemo"
+        android:name="com.eziride.rider.ui.home.HomeFragment"
         android:label="@string/book_ride"
-        tools:layout="@layout/fragment_map_demo" />
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
